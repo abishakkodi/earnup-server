@@ -11,13 +11,13 @@ const port = process.env.PORT || 3000;
 
 
 app.get('/', (req, res)=> {
-    res.status(200).send('<h1> We gucci </h1>');
+    res.status(200).send('<h1> Server is Running </h1>');
 });
 
 io.on('connection', (socket)=> {
-    socket.on('chat-message', (msg)=> {
-        log(chalk.blue(msg));
-        io.emit('chat-message', msg)
+    socket.on('chat-message', (payload)=> {
+
+        io.emit('chat-message', payload)
     });
 });
 
